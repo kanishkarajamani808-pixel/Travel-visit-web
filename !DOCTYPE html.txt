@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explore World | Travel & Tourism</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f5f8fa;
+    color: #222;
+}
+
+/* NAVBAR */
+header {
+    background: #073b4c;
+    color: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #ffd166;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 22px;
+    font-size: 15px;
+}
+
+nav a:hover {
+    color: #ffd166;
+}
+
+/* HERO */
+.hero {
+    height: 520px;
+    background:
+    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+    url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1600");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+.hero button {
+    padding: 14px 30px;
+    border: none;
+    background: #ffd166;
+    color: #073b4c;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* COMMON */
+section {
+    padding: 65px 7%;
+}
+
+.heading {
+    text-align: center;
+    font-size: 32px;
+    color: #073b4c;
+    margin-bottom: 15px;
+}
+
+.subheading {
+    text-align: center;
+    color: #777;
+    margin-bottom: 35px;
+}
+
+/* SEARCH */
+.search-box {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.search-box input {
+    width: 350px;
+    padding: 13px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.search-box button {
+    padding: 13px 22px;
+    background: #073b4c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* FILTER */
+.filters {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.filters button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    background: #dce9ed;
+    color: #073b4c;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.filters button.active,
+.filters button:hover {
+    background: #073b4c;
+    color: white;
+}
+
+/* DESTINATIONS */
+.destination-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,.1);
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+}
+
+.card img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 18px;
+}
+
+.card-content h3 {
+    color: #073b4c;
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    color: #666;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.card-content button {
+    margin-top: 15px;
+    padding: 10px 18px;
+    background: #06a77d;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* ABOUT */
+.about {
+    background: #eaf4f4;
+    text-align: center;
+}
+
+.about p {
+    max-width: 850px;
+    margin: auto;
+    line-height: 1.8;
+    color: #555;
+}
+
+/* SERVICES */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    gap: 20px;
+    text-align: center;
+}
+
+.service {
+    padding: 30px 15px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,.08);
+}
+
+.service .icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.service h3 {
+    color: #073b4c;
+    margin-bottom: 10px;
+}
+
+/* CONTACT */
+.contact {
+    background: #eaf4f4;
+    text-align: center;
+}
+
+.contact input,
+.contact textarea {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    padding: 13px;
+    margin: 12px auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact button {
+    background: #073b4c;
+    color: white;
+    border: none;
+    padding: 13px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+    background: #073b4c;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    line-height: 2;
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 200;
+    inset: 0;
+    background: rgba(0,0,0,.7);
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+}
+
+.modal-content h2 {
+    color: #073b4c;
+    margin-bottom: 15px;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.modal-content button {
+    background: #06a77d;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.close {
+    float: right;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+@media(max-width:700px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    nav a {
+        margin: 0;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .search-box {
+        flex-direction: column;
+    }
+
+    .search-box input {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🌍 Explore World</div>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#destinations">Destinations</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- HOME -->
+<div class="hero" id="home">
+    <div>
+        <h1>Explore The World</h1>
+        <p>Discover beautiful places and create unforgettable memories.</p>
+        <button onclick="document.getElementById('destinations').scrollIntoView()">
+            Explore Destinations
+        </button>
+    </div>
+</div>
+
+<!-- DESTINATIONS -->
+<section id="destinations">
+    <h2 class="heading">Popular Destinations</h2>
+    <p class="subheading">Find your next favourite travel destination</p>
+
+    <div class="search-box">
+        <input type="text" id="searchInput"
+        placeholder="Search destination...">
+        <button onclick="searchPlaces()">Search</button>
+    </div>
+
+    <div class="filters">
+        <button class="active" onclick="filterPlaces('All',this)">All</button>
+        <button onclick="filterPlaces('India',this)">India</button>
+        <button onclick="filterPlaces('International',this)">International</button>
+    </div>
+
+    <div class="destination-grid" id="destinationGrid"></div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+    <h2 class="heading">About Us</h2>
+    <p>
+        Explore World is a travel and tourism website designed to help
+        people discover amazing destinations around the world.
+        Our website provides information about popular tourist places,
+        travel services and booking enquiries. Our goal is to make
+        travel planning simple, enjoyable and convenient for everyone.
+    </p>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+    <h2 class="heading">Our Services</h2>
+    <p class="subheading">Making your journey comfortable and memorable</p>
+
+    <div class="services-grid">
+        <div class="service">
+            <div class="icon">✈️</div>
+            <h3>Flight Booking</h3>
+            <p>Explore flight booking options for your journey.</p>
+        </div>
+
+        <div class="service">
+            <div class="icon">🏨</div>
+            <h3>Hotel Booking</h3>
+            <p>Find comfortable accommodation for your stay.</p>
+        </div>
+
+        <div class="service">
+            <div class="icon">🚗</div>
+            <h3>Transportation</h3>
+            <p>Discover convenient travel and transport options.</p>
+        </div>
+
+        <div class="service">
+            <div class="icon">🧭</div>
+            <h3>Tour Guides</h3>
+            <p>Explore destinations with helpful travel information.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+    <h2 class="heading">Contact Us</h2>
+    <p class="subheading">Send us your enquiry</p>
+
+    <form onsubmit="sendMessage(event)">
+        <input type="text" id="contactName" placeholder="Your Name" required>
+        <input type="email" id="contactEmail" placeholder="Your Email" required>
+        <textarea id="contactMessage" rows="5"
+        placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <h3>🌍 Explore World</h3>
+    <p>Travel More | Explore More | Live More</p>
+    <p>© 2026 Explore World. All Rights Reserved.</p>
+    <p>Travel and Tourism Website Project</p>
+</footer>
+
+<!-- BOOKING MODAL -->
+<div class="modal" id="bookingModal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Book Your Trip</h2>
+        <p id="selectedPlace"></p>
+
+        <form onsubmit="submitBooking(event)">
+            <input type="text" id="bookingName"
+            placeholder="Your Name" required>
+
+            <input type="email" id="bookingEmail"
+            placeholder="Your Email" required>
+
+            <input type="date" id="travelDate" required>
+
+            <input type="number" id="travellers"
+            placeholder="Number of Travellers" min="1" required>
+
+            <button type="submit">Submit Booking Enquiry</button>
+        </form>
+    </div>
+</div>
+
+<script>
+
+/* DESTINATION DATA */
+
+const destinations = [
+    {
+        name:"Ooty",
+        country:"India",
+        category:"India",
+        description:"Enjoy beautiful hills, tea gardens and pleasant weather.",
+        image:"https://images.unsplash.com/photo-1597074866923-dc0589150358?w=600"
+    },
+    {
+        name:"Manali",
+        country:"India",
+        category:"India",
+        description:"Explore snowy mountains and beautiful valleys.",
+        image:"https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600"
+    },
+    {
+        name:"Goa",
+        country:"India",
+        category:"India",
+        description:"Experience beaches, sunsets and exciting activities.",
+        image:"https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=600"
+    },
+    {
+        name:"Munnar",
+        country:"India",
+        category:"India",
+        description:"Discover green tea plantations and misty mountains.",
+        image:"https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=600"
+    },
+    {
+        name:"Jaipur",
+        country:"India",
+        category:"India",
+        description:"Explore royal palaces and historic architecture.",
+        image:"https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?w=600"
+    },
+    {
+        name:"Kashmir",
+        country:"India",
+        category:"India",
+        description:"Experience beautiful lakes and mountain scenery.",
+        image:"https://images.unsplash.com/photo-1566837497312-7be4a6c7b2c5?w=600"
+    },
+    {
+        name:"Paris",
+        country:"France",
+        category:"International",
+        description:"Discover romantic streets and famous landmarks.",
+        image:"https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600"
+    },
+    {
+        name:"Dubai",
+        country:"UAE",
+        category:"International",
+        description:"Enjoy modern architecture and desert adventures.",
+        image:"https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600"
+    },
+    {
+        name:"Maldives",
+        country:"Maldives",
+        category:"International",
+        description:"Relax on beautiful beaches and clear blue waters.",
+        image:"https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=600"
+    },
+    {
+        name:"Switzerland",
+        country:"Switzerland",
+        category:"International",
+        description:"Explore snowy mountains and peaceful villages.",
+        image:"https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=600"
+    },
+    {
+        name:"Bali",
+        country:"Indonesia",
+        category:"International",
+        description:"Enjoy tropical beaches and beautiful temples.",
+        image:"https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600"
+    },
+    {
+        name:"London",
+        country:"United Kingdom",
+        category:"International",
+        description:"Visit iconic landmarks and historic attractions.",
+        image:"https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600"
+    }
+];
+
+/* DISPLAY DESTINATIONS */
+
+function displayPlaces(list) {
+    const grid = document.getElementById("destinationGrid");
+    grid.innerHTML = "";
+
+    if(list.length === 0) {
+        grid.innerHTML = "<p>No destinations found.</p>";
+        return;
+    }
+
+    list.forEach(place => {
+        grid.innerHTML += `
+        <div class="card">
+            <img src="${place.image}" alt="${place.name}">
+            <div class="card-content">
+                <h3>${place.name}, ${place.country}</h3>
+                <p>${place.description}</p>
+                <button onclick="openBooking('${place.name}')">
+                    Book Now
+                </button>
+            </div>
+        </div>`;
+    });
+}
+
+/* SEARCH */
+
+function searchPlaces() {
+    const value = document.getElementById("searchInput")
+    .value.toLowerCase().trim();
+
+    const result = destinations.filter(place =>
+        place.name.toLowerCase().includes(value) ||
+        place.country.toLowerCase().includes(value)
+    );
+
+    displayPlaces(result);
+}
+
+/* FILTER */
+
+function filterPlaces(category, button) {
+    document.querySelectorAll(".filters button").forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    if(category === "All") {
+        displayPlaces(destinations);
+    } else {
+        displayPlaces(destinations.filter(place =>
+            place.category === category
+        ));
+    }
+
+    document.getElementById("searchInput").value = "";
+}
+
+/* BOOKING */
+
+function openBooking(place) {
+    document.getElementById("selectedPlace").innerText =
+    "Destination: " + place;
+
+    document.getElementById("bookingModal").style.display = "flex";
+}
+
+function closeModal() {
+    document.getElementById("bookingModal").style.display = "none";
+}
+
+function submitBooking(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("bookingName").value;
+    const place = document.getElementById("selectedPlace").innerText;
+
+    alert("Thank you " + name +
+    "! Your booking enquiry for " + place +
+    " has been submitted.");
+
+    event.target.reset();
+    closeModal();
+}
+
+/* CONTACT */
+
+function sendMessage(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("contactName").value;
+
+    alert("Thank you " + name + "! Your message has been received.");
+
+    event.target.reset();
+}
+
+/* INITIAL DISPLAY */
+
+displayPlaces(destinations);
+
+</script>
+
+</body>
+</html>
